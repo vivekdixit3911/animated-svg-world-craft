@@ -29,13 +29,13 @@ const addAnimationStyles = () => {
     }
     
     @keyframes spin-slow {
-      from { transform: translate(-50%, -50%) rotate(0deg); }
-      to { transform: translate(-50%, -50%) rotate(360deg); }
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
     
     @keyframes spin-slower {
-      from { transform: translate(-50%, -50%) rotate(0deg); }
-      to { transform: translate(-50%, -50%) rotate(-360deg); }
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
     }
     
     @keyframes orbit {
@@ -56,6 +56,11 @@ const addAnimationStyles = () => {
     @keyframes glow-delayed {
       0%, 100% { opacity: 0.1; }
       50% { opacity: 0.15; }
+    }
+    
+    @keyframes particle {
+      0% { transform: translate(0, 0); opacity: 1; }
+      100% { transform: translate(var(--x, 20px), var(--y, -20px)); opacity: 0; }
     }
     
     .animate-float {
@@ -90,6 +95,13 @@ const addAnimationStyles = () => {
     .animate-glow-delayed {
       animation: glow-delayed 12s ease-in-out infinite;
       animation-delay: 3s;
+    }
+    
+    .animate-particle {
+      --x: calc(20px + 60px * var(--direction, 1) * random(-1, 1));
+      --y: calc(-20px + 60px * var(--direction, 1) * random(-1, 1));
+      animation: particle 0.8s ease-out forwards;
+      will-change: transform, opacity;
     }
     
     .line-clamp-2 {

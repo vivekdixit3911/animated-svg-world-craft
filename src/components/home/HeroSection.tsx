@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { AnimatedBlob, AnimatedWaves, HeroIconGrid } from '../icons/TechIcons';
 import { useIsMobile } from '@/hooks/use-mobile';
-import CartoonAvatar from '../icons/CartoonAvatar';
+import { TechLogo } from '../icons/TechIcons';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -14,6 +14,7 @@ const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [displayText, setDisplayText] = useState(animatedWords[0]);
   const [isChanging, setIsChanging] = useState(false);
+  const [particlesVisible, setParticlesVisible] = useState(false);
   
   // Use refs for animation timing
   const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -22,21 +23,33 @@ const HeroSection = () => {
     // Animation visibility on mount
     setIsVisible(true);
     
-    // Word rotation animation with smooth transition
+    // Word rotation animation with smooth ash-blowing effect
     const rotateWords = () => {
+      // First show particles effect
+      setParticlesVisible(true);
+      
+      // Start fading out current word
       setIsChanging(true);
       
-      // First fade out current word
+      // Then change word and fade in with slight delay for ash effect
       timerRef.current = setTimeout(() => {
-        // Then change word and fade in
         const nextIndex = (currentIndex + 1) % animatedWords.length;
         setCurrentIndex(nextIndex);
         setDisplayText(animatedWords[nextIndex]);
-        setIsChanging(false);
-      }, 400); // Time to fade out
+        
+        // Short delay before fading in the new word
+        setTimeout(() => {
+          setIsChanging(false);
+          
+          // Hide particles after word appears
+          setTimeout(() => {
+            setParticlesVisible(false);
+          }, 300);
+        }, 200);
+      }, 600); // Longer time to fade out for ash effect
     };
     
-    const interval = setInterval(rotateWords, 3000);
+    const interval = setInterval(rotateWords, 4000); // Longer interval for smoother effect
     
     return () => {
       clearInterval(interval);
@@ -80,18 +93,49 @@ const HeroSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* Text Content with Animation */}
+          {/* Text Content with enhanced animation */}
           <div 
             className={`text-left transform transition-all duration-1000 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             }`}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6">
-              Advancing <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
-                <span className={`inline-block min-w-[180px] md:min-w-[240px] transition-opacity duration-400 ${isChanging ? 'opacity-0' : 'opacity-100'}`}>
-                  {displayText}
+              <div className="block mb-2">Advancing</div>
+              <div className="flex items-center">
+                <span className="relative">
+                  <span className={`inline-block min-w-[180px] md:min-w-[240px] transition-all duration-600 
+                    ${isChanging ? 'opacity-0 translate-y-3 blur-sm' : 'opacity-100 translate-y-0 blur-none'}`}>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+                      {displayText}
+                    </span>
+                  </span>
+                  
+                  {/* Particle effect for ash-like transition */}
+                  {particlesVisible && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="relative w-full h-full">
+                        {[...Array(20)].map((_, i) => (
+                          <div 
+                            key={i}
+                            className="absolute rounded-full bg-blue-400/80 animate-particle"
+                            style={{
+                              width: `${Math.random() * 5 + 3}px`,
+                              height: `${Math.random() * 5 + 3}px`,
+                              left: `${Math.random() * 100}%`,
+                              top: `${Math.random() * 100}%`,
+                              animationDuration: `${Math.random() * 1 + 0.5}s`,
+                              opacity: Math.random() * 0.7 + 0.3
+                            }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </span>
-              </span> and Digital <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">Innovation</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600 ml-2">
+                  Innovation
+                </span>
+              </div>
             </h1>
             <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-lg">
               We build cutting-edge digital solutions that transform businesses 
@@ -107,39 +151,53 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Technology Icons Grid with Animation and Modular Characters */}
+          {/* Technology icons with spinning animation */}
           <div 
             className={`relative w-full aspect-square max-w-xs sm:max-w-sm md:max-w-md mx-auto transform transition-all duration-1000 ${
               isVisible ? "translate-y-0 opacity-100 rotate-0" : "translate-y-10 opacity-0 rotate-12"
             }`}
           >
-            {/* Main tech icon grid */}
+            {/* Main tech icon grid - now with tech logos instead of cartoon characters */}
             <div className="relative w-full h-full">
-              <HeroIconGrid className="w-full h-full animate-float" />
-              
-              {/* Modular cartoon characters - positioned strategically around the grid */}
-              <div className="absolute top-[10%] right-[5%] w-16 md:w-20 lg:w-24 animate-float">
-                <CartoonAvatar seed="dev1" role="Developer" className="w-full h-auto" />
-              </div>
-              
-              <div className="absolute bottom-[10%] left-[5%] w-16 md:w-20 lg:w-24 animate-float-delayed">
-                <CartoonAvatar seed="designer" role="Designer" className="w-full h-auto" />
-              </div>
-              
-              <div className="absolute top-[40%] left-[8%] w-14 md:w-16 lg:w-20 animate-float">
-                <CartoonAvatar seed="eng1" role="Engineer" className="w-full h-auto" />
-              </div>
-              
-              <div className="absolute bottom-[30%] right-[8%] w-14 md:w-16 lg:w-20 animate-float-delayed">
-                <CartoonAvatar seed="manager" role="Manager" className="w-full h-auto" />
-              </div>
-              
-              {/* Animated circles */}
-              <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] rounded-full border-2 border-blue-500/20 animate-spin-slow"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[85%] h-[85%] rounded-full border border-purple-500/10 animate-spin-slower"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1">
-                  <div className="absolute w-4 h-4 bg-blue-400 rounded-full animate-orbit blur-[2px]"></div>
+              <div className="absolute inset-0">
+                <div className="absolute w-full h-full">
+                  {/* Spinning tech logos */}
+                  <div className="absolute top-1/4 left-1/4 w-16 md:w-20 -translate-x-1/2 -translate-y-1/2 animate-spin-slow">
+                    <TechLogo type="react" className="w-full h-full" />
+                  </div>
+                  
+                  <div className="absolute top-1/4 left-3/4 w-16 md:w-20 -translate-x-1/2 -translate-y-1/2 animate-spin-slow" style={{ animationDelay: "2s" }}>
+                    <TechLogo type="node" className="w-full h-full" />
+                  </div>
+                  
+                  <div className="absolute top-3/4 left-1/4 w-16 md:w-20 -translate-x-1/2 -translate-y-1/2 animate-spin-slow" style={{ animationDelay: "1s" }}>
+                    <TechLogo type="typescript" className="w-full h-full" />
+                  </div>
+                  
+                  <div className="absolute top-3/4 left-3/4 w-16 md:w-20 -translate-x-1/2 -translate-y-1/2 animate-spin-slow" style={{ animationDelay: "0.5s" }}>
+                    <TechLogo type="tailwind" className="w-full h-full" />
+                  </div>
+                  
+                  <div className="absolute top-1/2 left-1/2 w-20 md:w-24 -translate-x-1/2 -translate-y-1/2 animate-float">
+                    <TechLogo type="javascript" className="w-full h-full" />
+                  </div>
+                  
+                  {/* Connecting Lines */}
+                  <svg className="absolute inset-0" width="100%" height="100%" fill="none">
+                    <line x1="25%" y1="25%" x2="50%" y2="50%" stroke="#2563EB" strokeWidth="2" strokeDasharray="5,5" />
+                    <line x1="75%" y1="25%" x2="50%" y2="50%" stroke="#F59E0B" strokeWidth="2" strokeDasharray="5,5" />
+                    <line x1="25%" y1="75%" x2="50%" y2="50%" stroke="#10B981" strokeWidth="2" strokeDasharray="5,5" />
+                    <line x1="75%" y1="75%" x2="50%" y2="50%" stroke="#EF4444" strokeWidth="2" strokeDasharray="5,5" />
+                  </svg>
+                </div>
+                
+                {/* Animated circles */}
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] rounded-full border-2 border-blue-500/20 animate-spin-slow"></div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[85%] h-[85%] rounded-full border border-purple-500/10 animate-spin-slower"></div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1">
+                    <div className="absolute w-4 h-4 bg-blue-400 rounded-full animate-orbit blur-[2px]"></div>
+                  </div>
                 </div>
               </div>
             </div>
