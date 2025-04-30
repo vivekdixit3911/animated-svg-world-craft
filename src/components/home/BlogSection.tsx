@@ -41,7 +41,7 @@ const blogPosts = [
     title: 'Why Every Business Needs a Digital Transformation Strategy',
     date: 'April 15, 2025',
     category: 'Business Strategy',
-    excerpt: 'Discover the essential components of a successful digital transformation and why it's crucial for modern businesses.',
+    excerpt: "Discover the essential components of a successful digital transformation and why it's crucial for modern businesses.",
     image: blogImages[0]
   },
   {
@@ -49,7 +49,7 @@ const blogPosts = [
     title: 'The Future of AI in Software Development',
     date: 'April 22, 2025',
     category: 'Technology',
-    excerpt: 'Explore how artificial intelligence is revolutionizing the way we build and deploy software applications.',
+    excerpt: "Explore how artificial intelligence is revolutionizing the way we build and deploy software applications.",
     image: blogImages[1]
   },
   {
@@ -57,7 +57,7 @@ const blogPosts = [
     title: 'Cloud Computing: Benefits for Small and Medium Businesses',
     date: 'April 28, 2025',
     category: 'Cloud Technology',
-    excerpt: 'Learn how small and medium-sized businesses can leverage cloud computing to scale operations and reduce costs.',
+    excerpt: "Learn how small and medium-sized businesses can leverage cloud computing to scale operations and reduce costs.",
     image: blogImages[2]
   }
 ];
