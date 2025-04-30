@@ -4,6 +4,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import GratechLogo from '../icons/GratechLogo';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const navItems = [
   { name: 'Home', path: '/' },
@@ -15,9 +17,9 @@ const navItems = [
 ];
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const isMobile = useIsMobile();
 
   // Handle scroll effect
   useEffect(() => {
@@ -34,11 +36,6 @@ const Navbar = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-  // Close mobile menu when navigating
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location]);
 
   return (
     <nav 
@@ -79,43 +76,42 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation using Sheet for better UX */}
         <div className="md:hidden">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle Menu"
-            className="text-white"
-          >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </Button>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label="Menu"
+                className="text-white"
+              >
+                <Menu className="h-6 w-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="bg-gratech-dark/95 border-white/10 backdrop-blur-md">
+              <div className="flex flex-col space-y-4 mt-8">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.path}
+                    className={`text-gray-300 hover:text-white transition-colors py-3 px-4 rounded-md text-lg ${
+                      location.pathname === item.path 
+                        ? 'bg-blue-900/30 text-white'
+                        : 'hover:bg-white/5'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+                <Link to="/contact" className="mt-4">
+                  <Button className="bg-gradient-to-r from-blue-600 to-blue-400 w-full py-6 text-lg">Contact Us</Button>
+                </Link>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden absolute top-full inset-x-0 bg-gratech-dark/95 backdrop-blur-md border-b border-white/10 p-4 animate-fade-in">
-          <div className="flex flex-col space-y-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`text-gray-300 hover:text-white transition-colors py-2 px-4 rounded-md ${
-                  location.pathname === item.path 
-                    ? 'bg-blue-900/30 text-white'
-                    : 'hover:bg-white/5'
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-            <Link to="/contact" className="mt-4">
-              <Button className="bg-gradient-to-r from-blue-600 to-blue-400 w-full">Contact Us</Button>
-            </Link>
-          </div>
-        </div>
-      )}
     </nav>
   );
 };
