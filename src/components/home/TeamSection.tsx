@@ -1,7 +1,5 @@
-
-import React from 'react';
-import CartoonAvatar from '../icons/CartoonAvatar';
 import { motion } from 'framer-motion';
+import CartoonAvatar from '../icons/CartoonAvatar';
 
 const team = [
   {
@@ -56,7 +54,7 @@ const itemVariants = {
 
 const TeamSection = () => {
   return (
-    <section className="py-20 bg-gratech-dark">
+    <section className="py-20 bg-nucleas-dark">
       <div className="container mx-auto px-4">
         <motion.div 
           className="text-center mb-16"
@@ -66,7 +64,7 @@ const TeamSection = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl font-bold mb-4">Our Expert Team</h2>
-          <div className="w-20 h-1 bg-gratech-blue mx-auto rounded"></div>
+          <div className="w-20 h-1 bg-nucleas-blue mx-auto rounded"></div>
           <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
             Meet the innovative minds behind our cutting-edge solutions and services.
           </p>

@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
 
@@ -12,7 +11,7 @@ const features = [
 
 const BusinessSection = () => {
   return (
-    <section className="py-20 bg-gratech-dark overflow-hidden">
+    <section className="py-20 bg-nucleas-dark overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Decorative Image */}
@@ -54,8 +53,8 @@ const BusinessSection = () => {
           
           {/* Text Content */}
           <div className="order-1 md:order-2">
-            <h2 className="text-3xl font-bold mb-6">
-              Empowering Businesses with Advanced <span className="text-gratech-blue">Technology</span>
+            <h2 className="text-4xl font-bold mb-6">
+              Empowering Businesses with Advanced <span className="text-nucleas-blue">Technology</span>
             </h2>
             <p className="text-gray-300 mb-8">
               We help organizations leverage the latest technologies to streamline operations,
@@ -65,8 +64,8 @@ const BusinessSection = () => {
             <ul className="space-y-3 mb-8">
               {features.map((feature, index) => (
                 <li key={index} className="flex items-center gap-3">
-                  <span className="bg-gratech-blue/20 p-1 rounded-full">
-                    <Check className="h-4 w-4 text-gratech-blue" />
+                  <span className="bg-nucleas-blue/20 p-1 rounded-full">
+                    <Check className="h-4 w-4 text-nucleas-blue" />
                   </span>
                   <span className="text-gray-300">{feature}</span>
                 </li>

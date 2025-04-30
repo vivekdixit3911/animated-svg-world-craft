@@ -1,13 +1,10 @@
-
 import { useEffect, useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { AnimatedBlob, AnimatedWaves, HeroIconGrid } from '../icons/TechIcons';
-import { useIsMobile } from '@/hooks/use-mobile';
+import { AnimatedBlob, AnimatedWaves } from '../icons/TechIcons';
 import { TechLogo } from '../icons/TechIcons';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const isMobile = useIsMobile();
   
   // Animated text elements with smooth transitions
   const animatedWords = ["Software", "Innovation", "Experience", "Solutions", "Future"];
@@ -61,7 +58,7 @@ const HeroSection = () => {
     <section className="relative overflow-hidden pt-24 md:pt-28 pb-24 md:pb-32">
       {/* Enhanced background elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-gratech-dark to-gratech-dark/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-nucleas-dark to-nucleas-dark/80"></div>
         <div className="absolute bottom-0 w-full h-1/3 md:h-1/2">
           <AnimatedWaves className="w-full h-full" />
         </div>

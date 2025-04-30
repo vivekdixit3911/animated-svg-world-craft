@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -25,15 +24,6 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
-				gratech: {
-					dark: '#12121F',
-					blue: '#2563EB',
-					lightblue: '#60A5FA',
-					purple: '#7C3AED',
-					orange: '#F59E0B',
-					green: '#10B981',
-					red: '#EF4444',
-				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -61,6 +51,10 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
+				},
+				nucleas: {
+					dark: "#0f172a",
+					blue: "#2563eb",
 				},
 			},
 			borderRadius: {

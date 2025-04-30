@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -10,7 +9,7 @@ const AboutUs = () => {
     {
       year: 2018,
       title: "Founded",
-      description: "Gratech was established by a group of tech enthusiasts with a vision to transform digital experiences."
+      description: "Nucleas IT was established by a group of tech enthusiasts with a vision to transform digital experiences."
     },
     {
       year: 2020,
@@ -78,10 +77,10 @@ const AboutUs = () => {
   // Leadership team
   const leadership = [
     {
-      name: "Michael Roberts",
-      role: "Chief Executive Officer",
-      bio: "With over 20 years of experience in technology leadership, Michael guides Gratech's strategic vision.",
-      seed: "michael-roberts"
+      name: "Michael Johnson",
+      role: "CEO & Founder",
+      bio: "With over 20 years of experience in technology leadership, Michael guides Nucleas IT's strategic vision.",
+      seed: "michael-johnson"
     },
     {
       name: "Sarah Chen",
@@ -108,7 +107,7 @@ const AboutUs = () => {
       <Navbar />
       <main>
         {/* Hero Section */}
-        <section className="py-20 bg-gratech-dark relative overflow-hidden">
+        <section className="py-20 bg-nucleas-dark relative overflow-hidden">
           <div className="absolute inset-0 opacity-20">
             <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
               <defs>
@@ -121,9 +120,10 @@ const AboutUs = () => {
           </div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">About Gratech</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">About Nucleas IT</h1>
               <p className="text-xl text-gray-300 mb-8">
-                We're a team of innovators, creators, and problem-solvers dedicated to building exceptional digital experiences.
+                Founded in 2018, Nucleas IT has evolved from a small startup to a leading digital innovation company. 
+                We've helped hundreds of businesses transform their digital presence and create amazing experiences for their users.
               </p>
               <div className="flex justify-center space-x-4">
                 <Button className="blue-gradient">Our Mission</Button>
@@ -139,7 +139,7 @@ const AboutUs = () => {
             <div className="max-w-3xl mx-auto text-center mb-16">
               <h2 className="text-3xl font-bold mb-6">Our Story</h2>
               <p className="text-gray-300">
-                Founded in 2018, Gratech has evolved from a small startup to a leading digital innovation company. 
+                Nucleas IT was established by a group of tech enthusiasts with a vision to transform digital experiences. 
                 We've helped hundreds of businesses transform their digital presence and create amazing experiences for their users.
               </p>
             </div>
@@ -175,7 +175,7 @@ const AboutUs = () => {
         </section>
 
         {/* Our Values */}
-        <section className="py-20 bg-gratech-dark/50">
+        <section className="py-20 bg-nucleas-dark/50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold mb-4">Our Values</h2>

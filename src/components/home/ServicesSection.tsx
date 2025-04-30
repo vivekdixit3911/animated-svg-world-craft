@@ -1,7 +1,5 @@
-
-import React from 'react';
-import { WebDevIcon, MobileAppIcon, UiUxIcon, CloudServiceIcon } from '../icons/TechIcons';
 import { Button } from '@/components/ui/button';
+import { WebDevIcon, MobileAppIcon, UiUxIcon, CloudServiceIcon } from '../icons/TechIcons';
 
 const services = [
   {
@@ -32,11 +30,11 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section className="py-20 bg-gratech-dark">
+    <section className="py-20 bg-nucleas-dark">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-4">Software Development Services</h2>
-          <div className="w-20 h-1 bg-gratech-blue mx-auto rounded"></div>
+          <div className="w-20 h-1 bg-nucleas-blue mx-auto rounded"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -48,7 +46,7 @@ const ServicesSection = () => {
               <service.icon className="w-16 h-16 mb-5" />
               <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
               <p className="text-gray-400 mb-4">{service.description}</p>
-              <Button variant="link" className="text-gratech-blue p-0">Learn more →</Button>
+              <Button variant="link" className="text-nucleas-blue p-0">Learn more →</Button>
             </div>
           ))}
         </div>

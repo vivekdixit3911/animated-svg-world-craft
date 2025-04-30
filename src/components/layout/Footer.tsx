@@ -1,18 +1,17 @@
-
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
-import GratechLogo from '../icons/GratechLogo';
+import NucleasLogo from '../icons/NucleasLogo';
 
 const Footer = () => {
   return (
-    <footer className="bg-gratech-dark footer-gradient pt-16 pb-8 text-white">
+    <footer className="bg-nucleas-dark footer-gradient pt-16 pb-8 text-white">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {/* Company Info */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <GratechLogo className="h-8 w-8" />
-              <span className="font-bold text-xl">Gratech</span>
+              <NucleasLogo className="h-8 w-8" />
+              <span className="font-bold text-xl">Nucleas IT</span>
             </div>
             <p className="text-gray-400 mb-4">
               Advancing Software and Digital Innovation for businesses worldwide.
@@ -105,7 +104,7 @@ const Footer = () => {
                 1234 Innovation Street,<br/>Tech Valley, CA 90210
               </li>
               <li className="text-gray-400">
-                hello@gratech.com
+                hello@nucleasit.com
               </li>
               <li className="text-gray-400">
                 +1 (555) 123-4567
@@ -116,9 +115,10 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="border-t border-white/10 pt-8">
-          <p className="text-center text-gray-500">
-            &copy; {new Date().getFullYear()} Gratech. All rights reserved.
-          </p>
+          <div className="text-center text-sm text-gray-400">
+            <p>© {new Date().getFullYear()} Nucleas IT. All rights reserved.</p>
+            <p className="mt-2">hello@nucleasit.com</p>
+          </div>
         </div>
       </div>
     </footer>

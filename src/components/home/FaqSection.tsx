@@ -1,12 +1,11 @@
-
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 const faqs = [
   {
     id: 1,
-    question: 'What services does Gratech offer?',
-    answer: 'Gratech offers a comprehensive range of software development services including web development, mobile app development, UI/UX design, cloud services, digital transformation consulting, and custom software solutions.'
+    question: 'What services does Nucleas IT offer?',
+    answer: 'Nucleas IT offers a comprehensive range of software development services including web development, mobile app development, UI/UX design, cloud services, digital transformation consulting, and custom software solutions.'
   },
   {
     id: 2,

@@ -1,153 +1,97 @@
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import { Button } from '@/components/ui/button';
+import { WebDevIcon, MobileAppIcon, UiUxIcon, CloudServiceIcon } from '@/components/icons/TechIcons';
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import { WebDevIcon, MobileAppIcon, UiUxIcon, CloudServiceIcon } from "@/components/icons/TechIcons";
-import { Button } from "@/components/ui/button";
-
-const serviceDetails = [
+const services = [
   {
     id: 1,
     title: 'Web Development',
+    description: 'Custom websites and web applications built with cutting-edge technologies.',
+    features: ['React/Next.js Development', 'E-commerce Solutions', 'Progressive Web Apps', 'API Integration'],
     icon: WebDevIcon,
-    description: 'We build responsive, fast, and secure websites and web applications using the latest technologies and best practices.',
-    features: [
-      'Custom Website Development',
-      'Progressive Web Apps (PWA)',
-      'E-commerce Solutions',
-      'Content Management Systems',
-      'API Development & Integration'
-    ]
+    gradient: 'from-blue-600 to-blue-400'
   },
   {
     id: 2,
     title: 'Mobile App Development',
+    description: 'Native and cross-platform mobile applications for iOS and Android.',
+    features: ['React Native Apps', 'Native iOS/Android', 'App Store Optimization', 'Push Notifications'],
     icon: MobileAppIcon,
-    description: 'Our team develops native and cross-platform mobile applications that provide seamless user experiences across devices.',
-    features: [
-      'iOS App Development',
-      'Android App Development',
-      'Cross-platform Solutions',
-      'App Maintenance & Support',
-      'App Redesign & Optimization'
-    ]
+    gradient: 'from-purple-600 to-purple-400'
   },
   {
     id: 3,
     title: 'UI/UX Design',
+    description: 'User-centered design that creates engaging digital experiences.',
+    features: ['User Research', 'Wireframing', 'Prototyping', 'Design Systems'],
     icon: UiUxIcon,
-    description: 'We create intuitive, engaging, and accessible user interfaces that deliver exceptional user experiences.',
-    features: [
-      'User Research & Testing',
-      'Wireframing & Prototyping',
-      'Interactive Design',
-      'Visual Design',
-      'Design Systems'
-    ]
+    gradient: 'from-pink-600 to-pink-400'
   },
   {
     id: 4,
     title: 'Cloud Services',
+    description: 'Scalable cloud solutions for modern business requirements.',
+    features: ['AWS/Azure Solutions', 'Cloud Migration', 'DevOps', 'Microservices'],
     icon: CloudServiceIcon,
-    description: 'Our cloud solutions enable businesses to scale efficiently, improve security, and reduce operational costs.',
-    features: [
-      'Cloud Migration',
-      'Infrastructure as Code',
-      'DevOps Implementation',
-      'Cloud Security',
-      'Serverless Applications'
-    ]
+    gradient: 'from-teal-600 to-teal-400'
   }
 ];
 
 const Services = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-nucleas-dark text-white">
       <Navbar />
       <main>
-        {/* Hero Banner */}
-        <section className="py-20 bg-gratech-dark relative overflow-hidden">
-          <div className="container mx-auto px-4 relative z-10">
+        {/* Hero Section */}
+        <section className="pt-32 pb-20 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute inset-0" style={{ 
+              backgroundImage: 'radial-gradient(circle at 25px 25px, white 2%, transparent 0%)',
+              backgroundSize: '50px 50px'
+            }} />
+          </div>
+          
+          <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
               <p className="text-xl text-gray-300 mb-8">
-                We offer a comprehensive range of software development and digital services to help businesses thrive in the digital age.
+                We deliver cutting-edge solutions that help businesses thrive in the digital age.
               </p>
-              <Button className="blue-gradient">Get in Touch</Button>
             </div>
           </div>
         </section>
 
-        {/* Services Details */}
+        {/* Services Grid */}
         <section className="py-20">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 gap-20">
-              {serviceDetails.map((service, index) => (
-                <div key={service.id} className={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
-                  <div className={`${index % 2 === 1 ? 'md:order-2' : ''}`}>
-                    <service.icon className="w-20 h-20 mb-6" />
-                    <h2 className="text-3xl font-bold mb-4">{service.title}</h2>
-                    <p className="text-gray-300 mb-8">{service.description}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {services.map((service) => (
+                <div 
+                  key={service.id}
+                  className="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300"
+                >
+                  <div className="p-8">
+                    <div className={`w-16 h-16 rounded-lg bg-gradient-to-r ${service.gradient} flex items-center justify-center mb-6`}>
+                      <service.icon className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-semibold mb-4">{service.title}</h3>
+                    <p className="text-gray-300 mb-6">{service.description}</p>
                     <ul className="space-y-3">
-                      {service.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-3">
-                          <span className="bg-gratech-blue/20 p-1 rounded-full">
-                            <svg className="h-4 w-4 text-gratech-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                              <path d="M5 13l4 4L19 7" />
-                            </svg>
-                          </span>
-                          <span>{feature}</span>
+                      {service.features.map((feature, index) => (
+                        <li key={index} className="flex items-center text-gray-300">
+                          <svg className="w-5 h-5 text-blue-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                          {feature}
                         </li>
                       ))}
                     </ul>
-                    <Button className="mt-8 blue-gradient">Learn More</Button>
                   </div>
-                  <div className={`${index % 2 === 1 ? 'md:order-1' : ''} bg-white/5 border border-white/10 rounded-xl p-8`}>
-                    <svg 
-                      viewBox="0 0 400 300" 
-                      className="w-full h-auto" 
-                      fill="none" 
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="400" height="300" rx="12" fill="#2563EB" fillOpacity="0.1" />
-                      <circle cx="200" cy="150" r="100" stroke="#2563EB" strokeWidth="4" strokeDasharray="20,10" />
-                      <circle cx="200" cy="150" r="50" fill="#2563EB" fillOpacity="0.3" />
-                      {/* Random decorative elements based on service id */}
-                      {service.id === 1 && (
-                        <>
-                          <rect x="100" y="100" width="200" height="20" rx="4" fill="#2563EB" fillOpacity="0.5" />
-                          <rect x="100" y="130" width="150" height="20" rx="4" fill="#2563EB" fillOpacity="0.4" />
-                          <rect x="100" y="160" width="100" height="20" rx="4" fill="#2563EB" fillOpacity="0.3" />
-                          <rect x="100" y="190" width="180" height="20" rx="4" fill="#2563EB" fillOpacity="0.2" />
-                        </>
-                      )}
-                      {service.id === 2 && (
-                        <>
-                          <rect x="160" y="70" width="80" height="160" rx="10" stroke="#2563EB" strokeWidth="4" fill="none" />
-                          <circle cx="200" cy="210" r="8" fill="#2563EB" />
-                          <rect x="180" y="90" width="40" height="8" rx="4" fill="#2563EB" fillOpacity="0.7" />
-                          <rect x="180" y="110" width="40" height="8" rx="4" fill="#2563EB" fillOpacity="0.7" />
-                          <rect x="180" y="130" width="40" height="8" rx="4" fill="#2563EB" fillOpacity="0.7" />
-                          <rect x="180" y="150" width="40" height="40" rx="4" fill="#2563EB" fillOpacity="0.3" />
-                        </>
-                      )}
-                      {service.id === 3 && (
-                        <>
-                          <path d="M100,150 Q200,50 300,150" stroke="#2563EB" strokeWidth="4" fill="none" />
-                          <circle cx="100" cy="150" r="10" fill="#2563EB" />
-                          <circle cx="200" cy="50" r="10" fill="#2563EB" />
-                          <circle cx="300" cy="150" r="10" fill="#2563EB" />
-                          <rect x="150" y="170" width="100" height="60" rx="8" fill="#2563EB" fillOpacity="0.3" />
-                        </>
-                      )}
-                      {service.id === 4 && (
-                        <>
-                          <path d="M150,100 C170,80 230,80 250,100 C270,120 270,180 250,200 C230,220 170,220 150,200 C130,180 130,120 150,100Z" fill="#2563EB" fillOpacity="0.2" stroke="#2563EB" strokeWidth="2" />
-                          <path d="M180,140 L220,140 L220,180 L180,180 Z" fill="#2563EB" fillOpacity="0.5" />
-                          <circle cx="200" cy="120" r="8" fill="#2563EB" />
-                          <circle cx="200" cy="200" r="8" fill="#2563EB" />
-                        </>
-                      )}
-                    </svg>
+                  <div className="px-8 py-4 border-t border-white/10">
+                    <Button className={`bg-gradient-to-r ${service.gradient} hover:opacity-90`}>
+                      Learn More
+                    </Button>
                   </div>
                 </div>
               ))}
@@ -155,17 +99,22 @@ const Services = () => {
           </div>
         </section>
 
-        {/* Call to Action */}
-        <section className="py-16 bg-gratech-blue">
+        {/* CTA Section */}
+        <section className="py-20 bg-gradient-to-b from-blue-600/20 to-purple-600/20 border-y border-white/10">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl font-bold mb-6 text-white">Ready to Start Your Project?</h2>
-              <p className="text-xl text-blue-100 mb-8">
-                Let's discuss how we can help you achieve your business goals with our software development expertise.
+              <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Business?</h2>
+              <p className="text-xl text-gray-300 mb-8">
+                Let's discuss how our services can help you achieve your digital goals.
               </p>
-              <Button variant="outline" className="bg-white text-gratech-blue hover:bg-blue-50 border-white">
-                Contact Us Today
-              </Button>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Button className="bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500">
+                  Get Started
+                </Button>
+                <Button variant="outline" className="border-white/20 hover:bg-white/5">
+                  View Case Studies
+                </Button>
+              </div>
             </div>
           </div>
         </section>

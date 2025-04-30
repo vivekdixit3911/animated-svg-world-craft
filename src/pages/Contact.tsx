@@ -1,15 +1,22 @@
-
-import { useState } from "react";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import { Button } from "@/components/ui/button";
+import React, { FormEvent, ChangeEvent } from 'react';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import { Button } from '@/components/ui/button';
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}
+
 const Contact = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = React.useState<FormData>({
     name: "",
     email: "",
     phone: "",
@@ -17,14 +24,14 @@ const Contact = () => {
     message: ""
   });
   
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
   
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     
@@ -46,7 +53,7 @@ const Contact = () => {
     {
       icon: <Mail className="h-6 w-6" />,
       title: "Email Us",
-      details: "hello@gratech.com",
+      details: "hello@nucleasit.com",
       description: "We'll respond within 24 hours"
     },
     {
@@ -90,7 +97,7 @@ const Contact = () => {
       <Navbar />
       <main>
         {/* Hero Section */}
-        <section className="py-16 bg-gratech-dark relative overflow-hidden">
+        <section className="py-16 bg-nucleas-dark relative overflow-hidden">
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">Get in Touch</h1>
@@ -102,7 +109,7 @@ const Contact = () => {
         </section>
 
         {/* Contact Information Cards */}
-        <section className="py-12 bg-gratech-dark">
+        <section className="py-12 bg-nucleas-dark">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {contactInfo.map((item, index) => (
@@ -230,7 +237,7 @@ const Contact = () => {
                     
                     {/* Location Pin Label */}
                     <rect x="370" y="250" width="60" height="20" rx="10" fill="#3B82F6" />
-                    <text x="400" y="265" textAnchor="middle" fill="white" fontSize="10">Gratech</text>
+                    <text x="400" y="265" textAnchor="middle" fill="white" fontSize="10">Nucleas IT</text>
                   </svg>
                 </div>
                 
@@ -250,7 +257,7 @@ const Contact = () => {
                     </div>
                     <div className="flex items-center">
                       <Mail className="h-5 w-5 text-blue-500 mr-3" />
-                      <span>hello@gratech.com</span>
+                      <span>hello@nucleasit.com</span>
                     </div>
                   </div>
                 </div>
@@ -270,7 +277,7 @@ const Contact = () => {
         </section>
         
         {/* FAQ Section */}
-        <section className="py-16 bg-gratech-dark/50">
+        <section className="py-16 bg-nucleas-dark/50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>

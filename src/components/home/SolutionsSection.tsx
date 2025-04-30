@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
@@ -129,12 +128,12 @@ const SolutionsSection = () => {
   const displayedSolutions = showAll ? solutions : solutions.slice(0, 3);
 
   return (
-    <section className="py-20 bg-gratech-dark/80">
+    <section className="py-20 bg-nucleas-dark/80">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16">
           <div>
             <h2 className="text-3xl font-bold mb-4">Our Software Solutions</h2>
-            <div className="w-20 h-1 bg-gratech-blue rounded"></div>
+            <div className="w-20 h-1 bg-nucleas-blue rounded"></div>
           </div>
           <Button variant="outline" className="mt-4 md:mt-0">
             View All Projects
@@ -153,7 +152,7 @@ const SolutionsSection = () => {
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-3">{solution.title}</h3>
                 <p className="text-gray-400 mb-4">{solution.description}</p>
-                <Button variant="link" className="text-gratech-blue p-0">View Details →</Button>
+                <Button variant="link" className="text-nucleas-blue p-0">View Details →</Button>
               </div>
             </div>
           ))}

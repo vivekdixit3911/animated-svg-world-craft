@@ -1,5 +1,3 @@
-
-import React from 'react';
 import { Card } from '@/components/ui/card';
 import CartoonAvatar from '../icons/CartoonAvatar';
 
@@ -8,21 +6,21 @@ const testimonials = [
     id: 1,
     name: 'Michael Brown',
     role: 'CEO, TechStart',
-    content: 'Working with Gratech completely transformed our business. Their team delivered a solution that not only met but exceeded our expectations.',
+    content: 'Working with Nucleas IT completely transformed our business. Their team delivered a solution that not only met but exceeded our expectations.',
     seed: 'michael-brown'
   },
   {
     id: 2,
     name: 'Jennifer Lee',
     role: 'CTO, InnovateCorp',
-    content: 'The mobile app developed by Gratech has increased our user engagement by 200%. Their attention to detail and technical expertise is unmatched.',
+    content: 'The mobile app developed by Nucleas IT has increased our user engagement by 200%. Their attention to detail and technical expertise is unmatched.',
     seed: 'jennifer-lee'
   },
   {
     id: 3,
     name: 'Robert Garcia',
     role: 'Founder, DataSphere',
-    content: 'Gratech helped us implement a complex data analytics system that gave us invaluable insights into our business operations. Highly recommend!',
+    content: 'Nucleas IT helped us implement a complex data analytics system that gave us invaluable insights into our business operations. Highly recommend!',
     seed: 'robert-garcia'
   }
 ];

@@ -1,4 +1,3 @@
-
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -30,7 +29,7 @@ const NotFound = () => {
         </div>
 
         <div className="text-center relative z-10 px-4">
-          <div className="text-8xl font-bold mb-4 text-gratech-blue">404</div>
+          <div className="text-8xl font-bold mb-4 text-nucleas-blue">404</div>
           <h1 className="text-3xl font-bold mb-6">Page Not Found</h1>
           <p className="text-xl text-gray-400 mb-8 max-w-md mx-auto">
             The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
