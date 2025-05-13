@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Facebook, Instagram, Linkedin } from 'lucide-react';
 import NucleasLogo from '../icons/NucleasLogo';
 
 const Footer = () => {
@@ -17,18 +17,15 @@ const Footer = () => {
               Advancing Software and Digital Innovation for businesses worldwide.
             </p>
             <div className="flex space-x-4">
-              <Link to="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.facebook.com/profile.php?id=61575910441814" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Facebook size={20} />
-              </Link>
-              <Link to="#" className="text-gray-400 hover:text-white transition-colors">
-                <Twitter size={20} />
-              </Link>
-              <Link to="#" className="text-gray-400 hover:text-white transition-colors">
+              </a>
+              <a href="https://www.instagram.com/nucleasitsolutions/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Instagram size={20} />
-              </Link>
-              <Link to="#" className="text-gray-400 hover:text-white transition-colors">
+              </a>
+              <a href="https://www.linkedin.com/in/nucleas-it-solutions-solutions-353125364/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Linkedin size={20} />
-              </Link>
+              </a>
             </div>
           </div>
 
@@ -93,6 +90,11 @@ const Footer = () => {
                   Privacy Policy
                 </Link>
               </li>
+              <li>
+                <a href="/sitemap.xml" className="text-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
+                  Sitemap
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -101,13 +103,13 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-2">
               <li className="text-gray-400">
-                1234 Innovation Street,<br/>Tech Valley, CA 90210
+                Noida Sector 62,<br/>India
               </li>
               <li className="text-gray-400">
-                hello@nucleasit.com
+                nucleasitsolutions@gmail.com
               </li>
               <li className="text-gray-400">
-                +1 (555) 123-4567
+                +91 9129999362, +91 9044632203
               </li>
             </ul>
           </div>
@@ -117,8 +119,13 @@ const Footer = () => {
         <div className="border-t border-white/10 pt-8">
           <div className="text-center text-sm text-gray-400">
             <p>© {new Date().getFullYear()} Nucleas IT. All rights reserved.</p>
-            <p className="mt-2">hello@nucleasit.com</p>
+            <p className="mt-2">nucleasitsolutions@gmail.com</p>
           </div>
+        </div>
+
+        <div className="text-center text-xs text-gray-400 mt-8">
+          © {new Date().getFullYear()} Nucleas IT. Custom software development, cloud solutions, SaaS, AI-powered business solutions, and digital transformation services. |
+          <a href="/sitemap.xml" className="underline hover:text-white ml-1" target="_blank" rel="noopener noreferrer">Sitemap</a>
         </div>
       </div>
     </footer>

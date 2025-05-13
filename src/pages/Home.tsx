@@ -1,29 +1,32 @@
+import React, { Suspense } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/home/HeroSection';
-import TechStack from '@/components/home/TechStack';
 import ServicesSection from '@/components/home/ServicesSection';
-import BusinessSection from '@/components/home/BusinessSection';
-import SolutionsSection from '@/components/home/SolutionsSection';
-import TeamSection from '@/components/home/TeamSection';
-import StatsSection from '@/components/home/StatsSection';
-import TestimonialsSection from '@/components/home/TestimonialsSection';
-import FaqSection from '@/components/home/FaqSection';
+import { Helmet } from 'react-helmet';
+const BusinessSection = React.lazy(() => import('@/components/home/BusinessSection'));
+const SolutionsSection = React.lazy(() => import('@/components/home/SolutionsSection'));
+const StatsSection = React.lazy(() => import('@/components/home/StatsSection'));
+const FaqSection = React.lazy(() => import('@/components/home/FaqSection'));
 
 const Home = () => {
   return (
     <div className="min-h-screen flex flex-col bg-nucleas-dark text-white">
+      <Helmet>
+        <title>Nucleas IT | Custom Software Development & Cloud Solutions</title>
+        <meta name="description" content="Nucleas IT offers custom software development, cloud solutions, SaaS, and AI-powered business solutions for modern enterprises." />
+        <link rel="icon" href="/NucleasIT_logo.ico" type="image/x-icon" />
+      </Helmet>
       <Navbar />
       <main>
         <HeroSection />
-        <TechStack />
         <ServicesSection />
-        <BusinessSection />
-        <SolutionsSection />
-        <TeamSection />
-        <StatsSection />
-        <TestimonialsSection />
-        <FaqSection />
+        <Suspense fallback={null}>
+          <BusinessSection />
+          <SolutionsSection />
+          <StatsSection />
+          <FaqSection />
+        </Suspense>
       </main>
       <Footer />
     </div>

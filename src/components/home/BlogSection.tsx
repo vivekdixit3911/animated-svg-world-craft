@@ -123,7 +123,7 @@ const BlogSection = () => {
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-gray-800 line-clamp-2">{post.title}</h3>
                 <p className="text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p>
-                <Link to="/blog">
+                <Link to={`/blog/${post.id}`}>
                   <Button variant="link" className="p-0 text-blue-600 group">
                     Read More{" "}
                     <span className="transform transition-transform duration-300 inline-block group-hover:translate-x-1">→</span>

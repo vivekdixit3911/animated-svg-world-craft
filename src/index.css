@@ -96,12 +96,17 @@
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-30px); }
+}
+
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(30px); }
 }
 
 @keyframes pulse-gentle {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+  50% { opacity: 0.8; }
 }
 
 @keyframes spin-slow {
@@ -111,7 +116,7 @@
 
 @keyframes bounce-gentle {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  50% { transform: scale(1.02); }
 }
 
 @keyframes dash {
@@ -120,22 +125,48 @@
   }
 }
 
+@keyframes pulse-glow {
+  0% { opacity: 0.7; filter: blur(32px); }
+  100% { opacity: 1; filter: blur(48px); }
+}
+
 .animate-float {
-  animation: float 6s infinite ease-in-out;
+  animation: float 8s infinite ease-in-out;
+  will-change: transform;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 10s infinite ease-in-out;
+  will-change: transform;
 }
 
 .animate-pulse-gentle {
-  animation: pulse-gentle 4s infinite ease-in-out;
+  animation: pulse-gentle 6s infinite ease-in-out;
+  will-change: opacity;
 }
 
 .animate-spin-slow {
-  animation: spin-slow 20s linear infinite;
+  animation: spin-slow 30s linear infinite;
+  will-change: transform;
 }
 
 .animate-bounce-gentle {
-  animation: bounce-gentle 4s infinite ease-in-out;
+  animation: bounce-gentle 6s infinite ease-in-out;
+  will-change: transform;
 }
 
 .animate-dash {
-  animation: dash 20s linear infinite;
+  animation: dash 30s linear infinite;
+  will-change: stroke-dashoffset;
+}
+
+.animate-holi-gradient {
+  background: linear-gradient(90deg, #ec4899, #6366f1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
 }

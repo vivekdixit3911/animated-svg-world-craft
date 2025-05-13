@@ -1,86 +1,130 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import styles from './SolutionsSection.module.css';
 
 // Create SVG abstract graphics for the solution cards
 const abstractGraphics = [
-  // E-Commerce
+  // E-Commerce Platform - Shopping Cart
   <svg key="ecommerce" viewBox="0 0 200 200" className="w-full h-auto rounded-xl overflow-hidden">
-    <rect width="200" height="200" fill="#111827" />
-    <path d="M 40,40 C 60,20 140,20 160,40 C 180,60 180,140 160,160 C 140,180 60,180 40,160 C 20,140 20,60 40,40" 
-          fill="#2563EB" fillOpacity="0.2" stroke="#2563EB" strokeWidth="3" />
-    <circle cx="70" cy="80" r="20" fill="#F59E0B" fillOpacity="0.6" />
-    <circle cx="130" cy="80" r="20" fill="#7C3AED" fillOpacity="0.6" />
-    <circle cx="100" cy="130" r="20" fill="#EF4444" fillOpacity="0.6" />
+    <defs>
+      <linearGradient id="cartGradient" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#60A5FA"/>
+        <stop offset="1" stopColor="#6366F1"/>
+      </linearGradient>
+      <filter id="cartShadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="8" stdDeviation="8" floodColor="#60A5FA" floodOpacity="0.18"/>
+      </filter>
+    </defs>
+    <rect width="200" height="200" rx="32" fill="#10182A" />
+    <g filter="url(#cartShadow)">
+      <rect x="50" y="80" width="100" height="60" rx="18" fill="url(#cartGradient)"/>
+      <rect x="60" y="70" width="80" height="20" rx="10" fill="#fff" fillOpacity="0.15"/>
+      <circle cx="75" cy="150" r="10" fill="#fff" fillOpacity="0.7"/>
+      <circle cx="125" cy="150" r="10" fill="#fff" fillOpacity="0.7"/>
+    </g>
   </svg>,
   
-  // Finance App
+  // Financial App - Upward Graph
   <svg key="finance" viewBox="0 0 200 200" className="w-full h-auto rounded-xl overflow-hidden">
-    <rect width="200" height="200" fill="#111827" />
-    <path d="M 40,160 L 70,100 L 100,130 L 130,70 L 160,40" 
-          fill="none" stroke="#10B981" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-    <circle cx="40" cy="160" r="8" fill="#10B981" />
-    <circle cx="70" cy="100" r="8" fill="#10B981" />
-    <circle cx="100" cy="130" r="8" fill="#10B981" />
-    <circle cx="130" cy="70" r="8" fill="#10B981" />
-    <circle cx="160" cy="40" r="8" fill="#10B981" />
+    <defs>
+      <linearGradient id="graphGradient" x1="0" y1="200" x2="200" y2="0" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#34D399"/>
+        <stop offset="1" stopColor="#60A5FA"/>
+      </linearGradient>
+      <filter id="graphShadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="8" stdDeviation="8" floodColor="#34D399" floodOpacity="0.18"/>
+      </filter>
+    </defs>
+    <rect width="200" height="200" rx="32" fill="#10182A" />
+    <g filter="url(#graphShadow)">
+      <polyline points="40,140 80,100 120,120 160,60" fill="none" stroke="url(#graphGradient)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round"/>
+      <circle cx="40" cy="140" r="8" fill="#34D399"/>
+      <circle cx="80" cy="100" r="8" fill="#34D399"/>
+      <circle cx="120" cy="120" r="8" fill="#34D399"/>
+      <circle cx="160" cy="60" r="8" fill="#34D399"/>
+    </g>
   </svg>,
   
-  // Healthcare Portal
+  // Healthcare Portal - Heart
   <svg key="healthcare" viewBox="0 0 200 200" className="w-full h-auto rounded-xl overflow-hidden">
-    <rect width="200" height="200" fill="#111827" />
-    <circle cx="100" cy="100" r="70" fill="#2563EB" fillOpacity="0.1" stroke="#2563EB" strokeWidth="2" />
-    <path d="M 70,100 L 95,125 L 140,80" 
-          fill="none" stroke="#60A5FA" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
-    <circle cx="100" cy="100" r="40" fill="none" stroke="#60A5FA" strokeWidth="2" strokeDasharray="5,5" />
+    <defs>
+      <linearGradient id="heartGradient" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#F472B6"/>
+        <stop offset="1" stopColor="#60A5FA"/>
+      </linearGradient>
+      <filter id="heartShadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="8" stdDeviation="8" floodColor="#F472B6" floodOpacity="0.18"/>
+      </filter>
+    </defs>
+    <rect width="200" height="200" rx="32" fill="#10182A" />
+    <g filter="url(#heartShadow)">
+      <path d="M100 150s-40-30-40-60a24 24 0 0 1 48 0 24 24 0 0 1 48 0c0 30-40 60-40 60z" fill="url(#heartGradient)"/>
+      <circle cx="80" cy="90" r="6" fill="#fff" fillOpacity="0.7"/>
+      <circle cx="120" cy="90" r="6" fill="#fff" fillOpacity="0.7"/>
+    </g>
   </svg>,
   
-  // AI Platform
+  // AI Research Platform - Brain
   <svg key="ai" viewBox="0 0 200 200" className="w-full h-auto rounded-xl overflow-hidden">
-    <rect width="200" height="200" fill="#111827" />
-    <path d="M100,40 L40,70 L40,130 L100,160 L160,130 L160,70 Z" 
-          fill="#7C3AED" fillOpacity="0.2" stroke="#7C3AED" strokeWidth="2" />
-    <path d="M100,40 L100,160" 
-          fill="none" stroke="#7C3AED" strokeWidth="2" strokeDasharray="5,5" />
-    <path d="M40,70 L160,130" 
-          fill="none" stroke="#7C3AED" strokeWidth="2" strokeDasharray="5,5" />
-    <path d="M40,130 L160,70" 
-          fill="none" stroke="#7C3AED" strokeWidth="2" strokeDasharray="5,5" />
-    <circle cx="100" cy="40" r="6" fill="#7C3AED" />
-    <circle cx="40" cy="70" r="6" fill="#7C3AED" />
-    <circle cx="40" cy="130" r="6" fill="#7C3AED" />
-    <circle cx="100" cy="160" r="6" fill="#7C3AED" />
-    <circle cx="160" cy="130" r="6" fill="#7C3AED" />
-    <circle cx="160" cy="70" r="6" fill="#7C3AED" />
+    <defs>
+      <linearGradient id="brainGradient" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#A78BFA"/>
+        <stop offset="1" stopColor="#60A5FA"/>
+      </linearGradient>
+      <filter id="brainShadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="8" stdDeviation="8" floodColor="#A78BFA" floodOpacity="0.18"/>
+      </filter>
+    </defs>
+    <rect width="200" height="200" rx="32" fill="#10182A" />
+    <g filter="url(#brainShadow)">
+      <ellipse cx="100" cy="110" rx="50" ry="40" fill="url(#brainGradient)"/>
+      <path d="M80,110 Q90,90 100,110 Q110,130 120,110" stroke="#fff" strokeWidth="3" fill="none"/>
+      <circle cx="100" cy="110" r="8" fill="#fff" fillOpacity="0.7"/>
+    </g>
   </svg>,
   
-  // IoT Dashboard
+  // IoT Dashboard - Cloud with Nodes
   <svg key="iot" viewBox="0 0 200 200" className="w-full h-auto rounded-xl overflow-hidden">
-    <rect width="200" height="200" fill="#111827" />
-    <rect x="50" y="50" width="40" height="40" rx="5" fill="#F59E0B" fillOpacity="0.7" />
-    <rect x="110" y="50" width="40" height="40" rx="5" fill="#F59E0B" fillOpacity="0.7" />
-    <rect x="50" y="110" width="40" height="40" rx="5" fill="#F59E0B" fillOpacity="0.7" />
-    <rect x="110" y="110" width="40" height="40" rx="5" fill="#F59E0B" fillOpacity="0.7" />
-    <line x1="70" y1="50" x2="70" y2="30" stroke="#F59E0B" strokeWidth="2" />
-    <line x1="130" y1="50" x2="130" y2="30" stroke="#F59E0B" strokeWidth="2" />
-    <line x1="70" y1="150" x2="70" y2="170" stroke="#F59E0B" strokeWidth="2" />
-    <line x1="130" y1="150" x2="130" y2="170" stroke="#F59E0B" strokeWidth="2" />
-    <circle cx="100" cy="100" r="10" fill="#F59E0B" />
-    <path d="M 30,100 Q 50,70 70,70 T 100,100 T 130,70 T 170,100" 
-          fill="none" stroke="#F59E0B" strokeWidth="2" />
+    <defs>
+      <linearGradient id="iotGradient" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#60A5FA"/>
+        <stop offset="1" stopColor="#34D399"/>
+      </linearGradient>
+      <filter id="iotShadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="8" stdDeviation="8" floodColor="#60A5FA" floodOpacity="0.18"/>
+      </filter>
+    </defs>
+    <rect width="200" height="200" rx="32" fill="#10182A" />
+    <g filter="url(#iotShadow)">
+      <ellipse cx="110" cy="120" rx="50" ry="30" fill="url(#iotGradient)"/>
+      <ellipse cx="80" cy="110" rx="20" ry="12" fill="#fff" fillOpacity="0.15"/>
+      <circle cx="70" cy="120" r="7" fill="#34D399"/>
+      <circle cx="150" cy="120" r="7" fill="#34D399"/>
+      <circle cx="110" cy="100" r="7" fill="#34D399"/>
+      <line x1="70" y1="120" x2="110" y2="100" stroke="#34D399" strokeWidth="2"/>
+      <line x1="150" y1="120" x2="110" y2="100" stroke="#34D399" strokeWidth="2"/>
+    </g>
   </svg>,
   
-  // Educational Platform
+  // Educational Platform - Graduation Cap
   <svg key="education" viewBox="0 0 200 200" className="w-full h-auto rounded-xl overflow-hidden">
-    <rect width="200" height="200" fill="#111827" />
-    <path d="M 40,120 L 100,80 L 160,120 L 100,160 Z" 
-          fill="#EF4444" fillOpacity="0.3" stroke="#EF4444" strokeWidth="2" />
-    <path d="M 100,80 L 100,40" 
-          fill="none" stroke="#EF4444" strokeWidth="2" />
-    <circle cx="100" cy="40" r="10" fill="#EF4444" fillOpacity="0.7" />
-    <path d="M 160,120 L 160,140" 
-          fill="none" stroke="#EF4444" strokeWidth="2" />
-    <rect x="155" y="140" width="10" height="20" fill="#EF4444" fillOpacity="0.7" />
+    <defs>
+      <linearGradient id="eduGradient" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#FBBF24"/>
+        <stop offset="1" stopColor="#60A5FA"/>
+      </linearGradient>
+      <filter id="eduShadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="8" stdDeviation="8" floodColor="#FBBF24" floodOpacity="0.18"/>
+      </filter>
+    </defs>
+    <rect width="200" height="200" rx="32" fill="#10182A" />
+    <g filter="url(#eduShadow)">
+      <polygon points="100,70 160,100 100,130 40,100" fill="url(#eduGradient)"/>
+      <rect x="85" y="130" width="30" height="12" rx="4" fill="#fff" fillOpacity="0.15"/>
+      <circle cx="100" cy="100" r="7" fill="#FBBF24"/>
+    </g>
   </svg>
 ];
 
@@ -88,37 +132,37 @@ const solutions = [
   {
     id: 1,
     title: 'E-Commerce Platform',
-    description: 'Scalable online shopping solution with secure payment processing and inventory management.',
+    description: 'Scalable online shopping solution with secure payment processing, inventory management, and e-commerce platform development.',
     graphic: abstractGraphics[0],
   },
   {
     id: 2,
     title: 'Financial App',
-    description: 'Secure banking application with real-time transactions and personal finance management tools.',
+    description: 'Fintech software development for secure banking, real-time transactions, and personal finance management tools.',
     graphic: abstractGraphics[1],
   },
   {
     id: 3,
     title: 'Healthcare Portal',
-    description: 'Patient management system with appointment scheduling and medical record integration.',
+    description: 'Healthcare software solutions for patient management, appointment scheduling, and medical record integration.',
     graphic: abstractGraphics[2],
   },
   {
     id: 4,
     title: 'AI Research Platform',
-    description: 'Advanced machine learning platform for data analysis and predictive modeling.',
+    description: 'Advanced machine learning solutions and AI-powered business analytics for data-driven decision making.',
     graphic: abstractGraphics[3],
   },
   {
     id: 5,
     title: 'IoT Dashboard',
-    description: 'Real-time monitoring dashboard for connected devices and sensors.',
+    description: 'IoT application development for real-time monitoring, connected devices, and business automation tools.',
     graphic: abstractGraphics[4],
   },
   {
     id: 6,
     title: 'Educational Platform',
-    description: 'Interactive learning management system with course creation and student tracking.',
+    description: 'Interactive learning management system for digital product design, student tracking, and scalable cloud infrastructure.',
     graphic: abstractGraphics[5],
   }
 ];
@@ -128,36 +172,32 @@ const SolutionsSection = () => {
   const displayedSolutions = showAll ? solutions : solutions.slice(0, 3);
 
   return (
-    <section className="py-20 bg-nucleas-dark/80">
+    <section className={styles.solutionsSection}>
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16">
-          <div>
-            <h2 className="text-3xl font-bold mb-4">Our Software Solutions</h2>
-            <div className="w-20 h-1 bg-nucleas-blue rounded"></div>
-          </div>
-          <Button variant="outline" className="mt-4 md:mt-0">
-            View All Projects
-          </Button>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>Our Software Solutions</h2>
+          <div className={styles.divider}></div>
+          <div className={styles.sectionSubtitle}>Explore our modular, scalable, and innovative software solutions designed for modern businesses, including AI-powered business solutions, fintech software development, healthcare software solutions, IoT application development, and more.</div>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+        <div className={styles.grid}>
           {displayedSolutions.map((solution) => (
             <div 
               key={solution.id}
-              className="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 group"
+              className={styles.card}
             >
-              <div className="mb-4 aspect-video group-hover:scale-105 transition-transform duration-500">
+              <div className={styles.cardImage}>
                 {solution.graphic}
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-3">{solution.title}</h3>
-                <p className="text-gray-400 mb-4">{solution.description}</p>
-                <Button variant="link" className="text-nucleas-blue p-0">View Details →</Button>
+              <div className={styles.cardContent}>
+                <h3 className={styles.cardTitle}>{solution.title}</h3>
+                <p className={styles.cardDesc}>{solution.description}</p>
+                <Link to="/portfolio" className={styles.cardButton}>
+                  <Button variant="link" className="text-nucleas-blue p-0">View Details →</Button>
+                </Link>
               </div>
             </div>
           ))}
         </div>
-
         {solutions.length > 3 && (
           <div className="text-center mt-8">
             <Button 

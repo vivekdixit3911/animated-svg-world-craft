@@ -1,29 +1,30 @@
 import { Button } from '@/components/ui/button';
 import { WebDevIcon, MobileAppIcon, UiUxIcon, CloudServiceIcon } from '../icons/TechIcons';
+import { Link } from 'react-router-dom';
 
 const services = [
   {
     id: 1,
     title: 'Web Development',
-    description: 'Custom websites and web applications with cutting-edge technologies.',
+    description: 'Custom software development and web applications for modern businesses, including SaaS platforms and secure web solutions.',
     icon: WebDevIcon
   },
   {
     id: 2,
     title: 'Mobile App Development',
-    description: 'Native and cross-platform mobile applications for iOS and Android.',
+    description: 'Native and cross-platform mobile app development for iOS and Android, including business automation tools and startup MVPs.',
     icon: MobileAppIcon
   },
   {
     id: 3,
     title: 'UI/UX Design',
-    description: 'User-centered design that creates engaging digital experiences.',
+    description: 'UI/UX design agency services for digital product design, intuitive interfaces, and engaging user experiences.',
     icon: UiUxIcon
   },
   {
     id: 4,
     title: 'Cloud Services',
-    description: 'Scalable cloud solutions for modern business requirements.',
+    description: 'Cloud solutions provider for scalable cloud infrastructure, digital transformation, and enterprise software solutions.',
     icon: CloudServiceIcon
   }
 ];
@@ -46,7 +47,9 @@ const ServicesSection = () => {
               <service.icon className="w-16 h-16 mb-5" />
               <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
               <p className="text-gray-400 mb-4">{service.description}</p>
-              <Button variant="link" className="text-nucleas-blue p-0">Learn more →</Button>
+              <Link to="/services">
+                <Button variant="link" className="text-nucleas-blue p-0">Learn more →</Button>
+              </Link>
             </div>
           ))}
         </div>

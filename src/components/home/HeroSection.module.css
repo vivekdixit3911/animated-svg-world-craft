@@ -1,0 +1,51 @@
+/* HeroSection.module.css */
+
+.heroSection {
+  position: relative;
+  overflow: hidden;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroHeadline {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: white;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-12px) scale(1.07); }
+  100% { transform: translateY(0px) scale(1); }
+}
+.animate-float {
+  animation: float 2.8s ease-in-out infinite;
+}
+
+.animated-gradient-text {
+  background: linear-gradient(270deg, #60A5FA, #2563EB, #7C3AED, #F59E0B, #60A5FA);
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 3s ease-in-out infinite;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  text-shadow: 0 4px 24px rgba(60,60,120,0.18);
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+} 

@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const features = [
   "Custom Software Solutions",
@@ -72,9 +73,11 @@ const BusinessSection = () => {
               ))}
             </ul>
             
-            <Button className="blue-gradient">
-              Learn More
-            </Button>
+            <Link to="/about">
+              <Button className="blue-gradient">
+                Learn More
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
